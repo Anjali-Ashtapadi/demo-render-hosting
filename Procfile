@@ -1,0 +1,1 @@
+web: gunicorn tyche_web.wsgi

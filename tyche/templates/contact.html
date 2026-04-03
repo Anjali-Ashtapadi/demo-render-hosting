@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li{
+      list-style-type: square;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>contact page of tyche website</h1>
+  {{ emailid }} <br><br>
+  {{ address_data }}
+ <h3>Contact Numbers: </h3>
+  <ul>
+    {% for number in contact_numbers %}
+      <li>{{ number }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Status: </h3>
+  {% if logged_status %}
+    <p>You are logged in.</p>
+  {% else %}
+    <p>You are not logged in.</p>
+  {% endif %}
+
+  <h3>Present Age: </h3>
+  {% if age > 18 %}
+    <p>Your present age is {{ age }} years and eligible to vote</p>
+  {% else %}
+    <p>Your Present age is {{ age }} and not eligible to vote</p>
+  {% endif %}
+
+  <h3>Official Data: </h3>
+  <ul>
+    {% for key, value in data.items %}
+    <li ><strong>{{ key }}</strong>: {{ value }}</li>
+    {% endfor %}
+  </ul>
+
+</body>
+</html>
