@@ -5,7 +5,8 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ✅ SECRET KEY (from environment)
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-local-key')
 
 # ✅ DEBUG (False in production)
 DEBUG = False
@@ -101,7 +102,7 @@ else:
     }
 
 # ✅ CORS (allow frontend from Vercel)
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 
 # ✅ PASSWORD VALIDATION
@@ -135,7 +136,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Optional (only if you have local static folder)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    
 ]
 
 # Whitenoise config
@@ -144,3 +145,19 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ✅ DEFAULT PK
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ✅ Allow local + deployed frontend
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://demo-vercel-hosting.vercel.app",
+    "https://demo-render-hosting.onrender.com",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://demo-vercel-hosting.vercel.app",
+]
+
+CORS_ALLOW_CREDENTIALS = True
