@@ -4,7 +4,7 @@ from django.db import models
 class Courses(models.Model):
   course_name = models.CharField(max_length =100)
   description = models.CharField(max_length=250)
-  duration = models.IntegerField()
+  duration = models.CharField(max_length = 100)
   tech_stack = models.CharField(max_length = 250)
 
   def __str__(self):
